@@ -18,16 +18,18 @@ class Solution {
         }
         
         Node curr = head;
-        Set<Integer> set = new HashSet<>();
-        set.add(curr.data);
+        Node temp;
         
-        while(curr.next != null){
-            if(set.contains(curr.next.data)){
-                curr.next = curr.next.next;
-            }else{
-                set.add(curr.next.data);
-                curr = curr.next;
+        while(curr != null){
+            temp = curr;
+            while(temp != null && temp.next != null){
+                if(temp.next.data == curr.data){
+                    temp.next = temp.next.next;
+                }else{
+                    temp = temp.next;
+                }
             }
+            curr = curr.next;
         }
         
         return head;
