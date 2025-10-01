@@ -6,19 +6,16 @@ class Solution {
         int midFromBottom = (n + 1) / 2;
         int targetFromTop = n - midFromBottom + 1; // 1-based from top
 
-        helper(s, 1, targetFromTop);
-        //System.out.println(i + " " + (int) Math.ceil(st.size() / 2.0));
-
+        helper(s, targetFromTop);
     }
 
-    private static void helper(Stack<Integer> st, int i, int mid) {
-        if(i == mid){
-            //System.out.println("Aditya");
+    private static void helper(Stack<Integer> st, int mid) {
+        if(mid == 1){
             st.pop();
             return;
         }
         int top = st.pop();
-        helper(st, i + 1, mid);
+        helper(st, mid - 1);
         st.push(top);
     }
 }
